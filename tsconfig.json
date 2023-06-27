@@ -1,0 +1,28 @@
+{
+    "include": ["src/**/*", "tests/**/*"],
+    "exclude": ["node_modules", "dist", "src/@types/graphql.gen.ts"],
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "lib": ["es2017", "dom"],
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "strictNullChecks": true,
+      "strict": true,
+      "module": "es6",
+      "target": "es5",
+      "jsx": "react-jsx",
+      "jsxImportSource": "@emotion/react",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": "./",
+      "paths": {
+        "@shared/*": ["src/components/shared/*"],
+        "@assets/*": ["src/assets/*"],
+        "@/*": ["src/*"],
+        "*": ["src/@types/*", "*"]
+      }
+    }
+  }
+  
