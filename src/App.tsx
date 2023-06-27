@@ -1,11 +1,8 @@
-import styled from "./DefaultTheme";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./pages/Router";
 
 export const App = () => (
-  <div>
-    <Test>1231</Test>
-  </div>
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
 );
-
-const Test = styled("div")({
-  color: "red",
-});
