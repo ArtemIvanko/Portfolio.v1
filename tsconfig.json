@@ -1,5 +1,5 @@
 {
-    "include": ["src/**/*", "tests/**/*"],
+    "include": ["src/**/*", "tests/**/*", "node_modules/@types", "src/@types"],
     "exclude": ["node_modules", "dist", "src/@types/graphql.gen.ts"],
     "compilerOptions": {
       "outDir": "./dist/",
