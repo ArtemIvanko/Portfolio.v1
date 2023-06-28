@@ -1,33 +1,19 @@
-import { Route, Routes } from "react-router-dom";
-import { Typography } from "@mui/material";
-import styled from "src/DefaultTheme"; //TODO Settup imports "@/DefaultTheme"
+//TODO Settup imports like: "@/DefaultTheme"
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigation } from "src/components/Navigation/Navigation";
+import { Home } from "./Home";
+import { NotFoundPage } from "./NotFound";
+import { About } from "./About";
+import { Projects } from "./Pojects";
 
 export const Router = () => (
   <Routes>
-    <Route
-      path="/"
-      element={
-        <TempHomePage>
-          <Typography variant="body2">Home page?</Typography>
-        </TempHomePage>
-      }
-    />
-    <Route
-      path="/test"
-      element={
-        <StyledTempComponent>
-          Here could be your advertisement
-        </StyledTempComponent>
-      }
-    />
+    <Route path="/" element={<Navigation />}>
+      <Route index element={<Navigate to="/home" />} />
+      <Route path="home" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="project" element={<Projects />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
   </Routes>
 );
-
-//TODO Remove temp component after connecting real component
-const TempHomePage = styled("div")(({ theme }) => ({
-  background: theme.palette.common.white,
-}));
-
-const StyledTempComponent = styled("div")(({ theme }) => ({
-  color: theme.palette.primary.main,
-}));
