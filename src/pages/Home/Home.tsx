@@ -1,4 +1,4 @@
-import styled from "src/DefaultTheme";
+import styled from "@/DefaultTheme";
 
 export const Home = () => <Root>Home page?</Root>;
 
