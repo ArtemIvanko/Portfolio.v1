@@ -17,7 +17,7 @@ $ npm install
 **Note: You will need to run the inspections app locally before starting the new repo.**
 
 ```
-$ npm start:rewired
+$ npm start
 ```
 
 #### Styles
@@ -56,11 +56,11 @@ export const TableContainer = styled("div")(({ theme }) => ({
 ### Production Build
 
 ```
-$ npm run build:rewired
+$ npm run build
 ```
 
 ### Testing
 
 ```
-$ npm test:rewired
+$ npm test
 ```
