@@ -1,8 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
 import { Router } from "./pages/Router";
+import { Providers } from "./Providers";
 
 export const App = () => (
-  <BrowserRouter>
+  <Providers>
     <Router />
-  </BrowserRouter>
+  </Providers>
 );
