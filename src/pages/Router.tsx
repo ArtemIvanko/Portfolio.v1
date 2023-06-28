@@ -1,4 +1,3 @@
-//TODO Settup imports like: "@/DefaultTheme"
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navigation } from "@/components/Navigation/Navigation";
 import { Home } from "./Home";
