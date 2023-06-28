@@ -1,7 +1,7 @@
 //TODO Settup imports
 import { FunctionComponent } from "react";
 import { Link, Outlet } from "react-router-dom";
-import styled from "src/DefaultTheme";
+import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => (
   <Root>
