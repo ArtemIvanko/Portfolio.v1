@@ -1,16 +1,17 @@
 import { FunctionComponent } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Typography } from "@mui/material";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => (
   <Root>
     <NavBar>
       <NavLink to="home">
-        <div>Logo placement</div>
+        <Logo variant="subtitle1">Ai</Logo>
         Home
       </NavLink>
       <NavLink to="about">About</NavLink>
-      <NavLink to="project">Project</NavLink>
+      <NavLink to="project">Projects</NavLink>
     </NavBar>
     <ContentWrapper>
       <Outlet />
@@ -28,17 +29,26 @@ const Root = styled("div")({
 const NavBar = styled("nav")(({ theme }) => ({
   display: "flex",
   gap: "1rem",
-  background: theme.palette.divider,
+  padding: "0.5rem",
+  background: theme.palette.background.default,
   alignItems: "center",
-  minHeight: "3rem",
+  minHeight: "4rem",
   minWidth: "3.75rem",
 }));
 
 const NavLink = styled(Link)(({ theme }) => ({
   display: "flex",
+  alignItems: "center",
   textTransform: "uppercase",
   textDecoration: "none",
   color: theme.palette.primary.main,
+}));
+
+const Logo = styled(Typography)(({ theme }) => ({
+  border: `1px solid ${theme.palette.primary.main}`,
+  lineHeight: "1.25",
+  padding: "0.75rem",
+  marginRight: "0.5rem",
 }));
 
 const ContentWrapper = styled("main")({
