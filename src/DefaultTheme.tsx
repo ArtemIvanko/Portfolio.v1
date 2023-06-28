@@ -7,8 +7,8 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 export enum FontFamily {
-  Primary = "Montserrat, Helvetica, Arial, sans-serif",
-  Secondary = "Outfit, Montserrat, Helvetica, Arial, sans-serif",
+  Primary = "'Ysabeau SC', sans-serif",
+  Secondary = "Outfit, Montserrat, Helvetica, Arial, sans-serif", //TODO Set custom font
 }
 
 const basicHeadingStyles = {
