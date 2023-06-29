@@ -13,7 +13,9 @@ interface ISocialLinkProps {
 
 export const Footer = () => (
   <Root>
-    <CopyrightTitle variant="body2">2023 © All Rights Reserved.</CopyrightTitle>
+    <CopyrightTitle variant="body2">
+      Copyright (c) 2023 Artem Ivanko
+    </CopyrightTitle>
     <LinkContainer>
       <SocialLink href="" icon={<GitHubIcon />} />
       <SocialLink href="" icon={<PinterestIcon />} />
