@@ -6,10 +6,8 @@ import styled from "@/DefaultTheme";
 export const Navigation: FunctionComponent = () => (
   <Root>
     <NavBar>
-      <NavLink to="home">
-        <Logo variant="subtitle1">Ai</Logo>
-        Home
-      </NavLink>
+      <BrandName variant="overline">Creative.js</BrandName>
+      <NavLink to="home">Home</NavLink>
       <NavLink to="about">About</NavLink>
       <NavLink to="project">Projects</NavLink>
     </NavBar>
@@ -28,12 +26,15 @@ const Root = styled("div")({
 
 const NavBar = styled("nav")(({ theme }) => ({
   display: "flex",
-  gap: "1rem",
-  padding: "0.5rem",
-  background: theme.palette.background.default,
   alignItems: "center",
-  minHeight: "4rem",
-  minWidth: "3.75rem",
+  height: "4rem",
+  width: "100%",
+  padding: "0 1rem",
+  gap: "1rem",
+  boxShadow: `inset 0 -1px 0 0 ${theme.palette.primary.bg}`,
+  [theme.breakpoints.up("lg")]: {
+    padding: "0 3.5rem",
+  },
 }));
 
 const NavLink = styled(Link)(({ theme }) => ({
@@ -42,13 +43,22 @@ const NavLink = styled(Link)(({ theme }) => ({
   textTransform: "uppercase",
   textDecoration: "none",
   color: theme.palette.primary.main,
+  fontSize: theme.typography.caption.fontSize,
+  "&:hover": {
+    fontWeight: "600",
+    textDecoration: "underline",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: theme.typography.h6.fontSize,
+  },
 }));
 
-const Logo = styled(Typography)(({ theme }) => ({
-  border: `1px solid ${theme.palette.primary.main}`,
+const BrandName = styled(Typography)(({ theme }) => ({
   lineHeight: "1.25",
-  padding: "0.75rem",
-  marginRight: "0.5rem",
+  fontSize: theme.typography.h6.fontSize,
+  [theme.breakpoints.up("lg")]: {
+    fontSize: theme.typography.h4.fontSize,
+  },
 }));
 
 const ContentWrapper = styled("main")({
