@@ -20,10 +20,7 @@ export const NotFound = () => {
 
 const Root = styled("div")(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   flexDirection: "column",
-  height: "100%",
   padding: "0 0.5rem 5rem",
   [theme.breakpoints.up("lg")]: {
     flexDirection: "row",

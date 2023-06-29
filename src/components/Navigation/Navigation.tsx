@@ -1,8 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { Footer } from "@shared/Footer";
-import { Loader } from "@shared/Loader";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => {
@@ -22,7 +21,13 @@ export const Navigation: FunctionComponent = () => {
         <NavLink to="about">About</NavLink>
         <NavLink to="project">Projects</NavLink>
       </NavBar>
-      <ContentWrapper>{isLoading ? <Loader /> : <Outlet />}</ContentWrapper>
+      <ContentWrapper>
+        {isLoading ? (
+          <CircularProgress size="5rem" color="primary" />
+        ) : (
+          <Outlet />
+        )}
+      </ContentWrapper>
       <Footer />
     </Root>
   );
@@ -57,7 +62,6 @@ const NavLink = styled(Link)(({ theme }) => ({
   fontSize: theme.typography.caption.fontSize,
   "&:hover": {
     fontWeight: "600",
-    textDecoration: "underline",
   },
   [theme.breakpoints.up("lg")]: {
     fontSize: theme.typography.h6.fontSize,
@@ -73,6 +77,9 @@ const BrandName = styled(Typography)(({ theme }) => ({
 }));
 
 const ContentWrapper = styled("main")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   flexGrow: "1",
   overflow: "auto",
 });
