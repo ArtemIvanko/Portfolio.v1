@@ -8,7 +8,7 @@ import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 export enum FontFamily {
   Primary = "'Ysabeau SC', sans-serif",
-  Secondary = "Outfit, Montserrat, Helvetica, Arial, sans-serif", //TODO Set custom font
+  Secondary = "'Belanosima', sans-serif",
 }
 
 const basicHeadingStyles = {
@@ -30,10 +30,10 @@ let defaultTheme = createTheme({
   breakpoints,
   palette: {
     primary: {
-      main: "#111",
+      main: "#1E1E1E",
       light: "#77AEDB",
       logo: "#FF5733",
-      bg: "red",
+      bg: "#EAEAEA",
     },
     secondary: {
       main: "#6633cc",
