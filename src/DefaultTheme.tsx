@@ -36,7 +36,7 @@ let defaultTheme = createTheme({
       bg: "#EAEAEA",
     },
     secondary: {
-      main: "#6633cc",
+      main: "#FAFAFA",
       light: "#845BD6",
       dark: "#47238E",
     },
