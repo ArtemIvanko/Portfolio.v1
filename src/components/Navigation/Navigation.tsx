@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Typography } from "@mui/material";
+import { Footer } from "@shared/Footer";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => (
@@ -14,6 +15,7 @@ export const Navigation: FunctionComponent = () => (
     <ContentWrapper>
       <Outlet />
     </ContentWrapper>
+    <Footer />
   </Root>
 );
 
