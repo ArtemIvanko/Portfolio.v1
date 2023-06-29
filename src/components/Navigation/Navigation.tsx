@@ -1,23 +1,32 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { Footer } from "@shared/Footer";
+import { Loader } from "@shared/Loader";
 import styled from "@/DefaultTheme";
 
-export const Navigation: FunctionComponent = () => (
-  <Root>
-    <NavBar>
-      <BrandName variant="overline">Creative.js</BrandName>
-      <NavLink to="home">Home</NavLink>
-      <NavLink to="about">About</NavLink>
-      <NavLink to="project">Projects</NavLink>
-    </NavBar>
-    <ContentWrapper>
-      <Outlet />
-    </ContentWrapper>
-    <Footer />
-  </Root>
-);
+export const Navigation: FunctionComponent = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
+  return (
+    <Root>
+      <NavBar>
+        <BrandName variant="overline">Creative.js</BrandName>
+        <NavLink to="home">Home</NavLink>
+        <NavLink to="about">About</NavLink>
+        <NavLink to="project">Projects</NavLink>
+      </NavBar>
+      <ContentWrapper>{isLoading ? <Loader /> : <Outlet />}</ContentWrapper>
+      <Footer />
+    </Root>
+  );
+};
 
 const Root = styled("div")({
   display: "flex",
