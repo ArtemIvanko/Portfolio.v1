@@ -50,6 +50,7 @@ const Root = styled("div")({
 
 const StyledImage = styled("img")({
   width: "100%",
+  maxWidth: "40rem",
 });
 
 const Container = styled("div")({
