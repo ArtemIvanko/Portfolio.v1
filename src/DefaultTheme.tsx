@@ -31,14 +31,16 @@ let defaultTheme = createTheme({
   palette: {
     primary: {
       main: "#1E1E1E",
-      light: "#77AEDB",
+      light: "#0070F3",
+      dark: "#004DA7",
       logo: "#FF5733",
       bg: "#EAEAEA",
     },
     secondary: {
       main: "#FAFAFA",
-      light: "#845BD6",
-      dark: "#47238E",
+      light: "#A9F1E3",
+      dark: "#8BC6BB",
+      bg: "#666666",
     },
     error: {
       main: "#B51010",
@@ -81,6 +83,12 @@ let defaultTheme = createTheme({
     overline: {
       fontFamily: FontFamily.Secondary,
       fontWeight: 600,
+    },
+    caption: {
+      fontFamily: FontFamily.Secondary,
+      textTransform: "uppercase",
+      fontSize: "1.5rem",
+      fontWeight: 400,
     },
   },
 });

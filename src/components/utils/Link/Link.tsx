@@ -1,4 +1,4 @@
-import { Link as ReactLink } from "react-router-dom";
+import { Link as ReactLink, useLocation } from "react-router-dom";
 import { LinkProps } from "@mui/material";
 import styled from "@/DefaultTheme";
 
@@ -10,38 +10,54 @@ export enum LinkColor {
 interface ILinkProps extends LinkProps {
   href: string;
   color?: LinkColor;
+  pathName?: string;
 }
 
 interface StyledLinkProps {
   $color: LinkColor;
+  $isActive: boolean;
 }
 
 export const Link = ({
   href,
   children,
+  pathName,
   color = LinkColor.Primary,
 }: ILinkProps) => {
+  const location = useLocation();
+
   return (
-    <StyledLink $color={color} to={href}>
+    <StyledLink
+      $isActive={location.pathname === pathName}
+      $color={color}
+      to={href}
+    >
       {children}
     </StyledLink>
   );
 };
 
-const StyledLink = styled(ReactLink)<StyledLinkProps>(({ theme, $color }) => {
-  const fillTextByColor: Record<LinkColor, string> = {
-    [LinkColor.Primary]: theme.palette.primary.main,
-    [LinkColor.Secondary]: theme.palette.secondary.main,
-  };
+const StyledLink = styled(ReactLink)<StyledLinkProps>(
+  ({ theme, $color, $isActive }) => {
+    const fillTextByColor: Record<LinkColor, string> = {
+      [LinkColor.Primary]: theme.palette.primary.main,
+      [LinkColor.Secondary]: theme.palette.secondary.main,
+    };
 
-  return {
-    textDecoration: "none",
-    color: fillTextByColor[$color],
-    display: "inline-flex",
-    padding: "0.5rem",
+    return {
+      textDecoration: "none",
+      color: fillTextByColor[$color],
+      display: "inline-flex",
+      padding: "0.5rem",
 
-    "&:hover": {
-      fontWeight: "600",
-    },
-  };
-});
+      ...(!!$isActive && {
+        fontWeight: "600",
+        color: theme.palette.primary.light,
+      }),
+
+      "&:hover": {
+        fontWeight: "600",
+      },
+    };
+  }
+);

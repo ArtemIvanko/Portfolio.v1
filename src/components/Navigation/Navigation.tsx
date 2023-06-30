@@ -17,10 +17,18 @@ export const Navigation: FunctionComponent = () => {
   return (
     <Root>
       <NavBar>
-        <BrandName variant="overline">Creative.js</BrandName>
-        <Link href="home">Home</Link>
-        <Link href="about">About</Link>
-        <Link href="project">Projects</Link>
+        <BrandName>
+          <Typography variant="caption">Creative</Typography>.js
+        </BrandName>
+        <Link pathName="/home" href="home">
+          Home
+        </Link>
+        <Link pathName="/about" href="about">
+          About
+        </Link>
+        <Link pathName="/project" href="project">
+          Projects
+        </Link>
       </NavBar>
       <ContentWrapper>
         {isLoading ? (
@@ -52,11 +60,10 @@ const NavBar = styled("nav")(({ theme }) => ({
 }));
 
 const BrandName = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.h6.fontSize,
   marginRight: "0.5rem",
   [theme.breakpoints.up("lg")]: {
-    fontSize: theme.typography.h4.fontSize,
     marginRight: "2.5rem",
+    padding: "0.5rem",
   },
 }));
 
