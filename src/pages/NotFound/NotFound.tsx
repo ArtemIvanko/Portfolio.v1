@@ -21,7 +21,6 @@ export const NotFound = () => {
 const Root = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  padding: "0 0.5rem 5rem",
   [theme.breakpoints.up("lg")]: {
     flexDirection: "row",
   },
