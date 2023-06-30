@@ -26,6 +26,12 @@ const breakpoints = createBreakpoints({
   },
 });
 
+const scrollbarStyles = {
+  "*::-webkit-scrollbar": {
+    display: "none",
+  },
+};
+
 let defaultTheme = createTheme({
   breakpoints,
   palette: {
@@ -89,6 +95,11 @@ let defaultTheme = createTheme({
       textTransform: "uppercase",
       fontSize: "1.5rem",
       fontWeight: 400,
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: scrollbarStyles,
     },
   },
 });
