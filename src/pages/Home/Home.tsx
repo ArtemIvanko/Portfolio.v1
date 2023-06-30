@@ -1,5 +1,6 @@
 import { Button, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "@shared/utils/Link";
+import Image from "@assets/background.jpg";
 import styled from "@/DefaultTheme";
 
 export const Home = () => {
@@ -10,9 +11,9 @@ export const Home = () => {
   return (
     <Root>
       {isDesktopResolution && (
-        <Dummy>
-          Dummy placement. TODO: Put here an image or something like that
-        </Dummy>
+        <div>
+          <StyledImage src={Image} alt="background img" />
+        </div>
       )}
       <Container>
         <Typography variant="h4">
@@ -47,9 +48,8 @@ const Root = styled("div")({
   gap: "3rem",
 });
 
-const Dummy = styled("div")({
+const StyledImage = styled("img")({
   width: "100%",
-  border: "3px solid red",
 });
 
 const Container = styled("div")({
