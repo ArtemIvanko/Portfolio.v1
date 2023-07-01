@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Button, Typography, useMediaQuery } from "@mui/material";
-import { Link } from "@shared/utils/Link";
+import { Link } from "@utils/Link";
 import Image from "@assets/background.jpg";
 import styled from "@/DefaultTheme";
 

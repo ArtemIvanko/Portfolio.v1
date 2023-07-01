@@ -1,6 +1,6 @@
 import { Button, Card as MuiCard, Typography } from "@mui/material";
-import { Link } from "@shared/utils/Link";
-import { Icon } from "@shared/utils/Icon";
+import { Link } from "@utils/Link";
+import { Icon } from "@utils/Icon";
 import styled from "@/DefaultTheme";
 
 interface ICardProps {

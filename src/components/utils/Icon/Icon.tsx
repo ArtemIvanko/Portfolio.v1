@@ -3,7 +3,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import { Link, LinkColor } from "@shared/utils/Link";
+import { Link, LinkColor } from "@utils/Link";
 
 type IconVariant = "github" | "pinterest" | "twitter" | "telegram";
 
