@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { CircularProgress, Typography } from "@mui/material";
 import { Footer } from "@shared/Footer";
-import { Link } from "@shared/utils/Link";
+import { Link } from "@utils/Link";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => {

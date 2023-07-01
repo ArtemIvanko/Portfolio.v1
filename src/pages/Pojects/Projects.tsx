@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Card } from "@/components/utils/Card";
+import { Card } from "@utils/Card";
 import { Typography } from "@mui/material";
 import styled from "@/DefaultTheme";
 
