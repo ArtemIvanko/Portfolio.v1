@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Button, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "@shared/utils/Link";
 import Image from "@assets/background.jpg";
@@ -8,11 +9,13 @@ export const Home = () => {
     breakpoints.up("md")
   );
 
+  const cachedImageSrc = useMemo(() => Image, []);
+
   return (
     <Root>
       {isDesktopResolution && (
         <div>
-          <StyledImage src={Image} alt="background img" />
+          <StyledImage src={cachedImageSrc} alt="background img" />
         </div>
       )}
       <Container>
