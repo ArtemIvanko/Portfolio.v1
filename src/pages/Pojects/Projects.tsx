@@ -12,7 +12,7 @@ export const Projects = () => {
         title: "Portfolio Project",
         imgSrc: ProjectImage,
         description:
-          "A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your local currency.",
+          "The TypeScript React Portfolio page is a visually appealing website that showcases projects using React, TypeScript, and Material-UI. It offers seamless navigation and interactive features for users to explore the Home, About, and Project pages.",
         href: "https://github.com/ArtemIvanko/Portfolio.v1",
       },
     ];
