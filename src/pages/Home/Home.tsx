@@ -1,7 +1,9 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Button, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "@utils/Link";
+import { fileDownloadByURL } from "@utils/browser/fileDownload";
 import Image from "@assets/background.jpg";
+import ResumeFile from "@assets/PDF/Resume.pdf";
 import styled from "@/DefaultTheme";
 
 export const Home = () => {
@@ -10,6 +12,13 @@ export const Home = () => {
   );
 
   const cachedImageSrc = useMemo(() => Image, []);
+
+  const handleResumeDownload = useCallback(() => {
+    fileDownloadByURL({
+      url: ResumeFile,
+      fileName: "resume",
+    });
+  }, []);
 
   return (
     <Root>
@@ -38,7 +47,9 @@ export const Home = () => {
           requirements.
         </Typography>
         <div>
-          <StyledButton variant="contained">Resume</StyledButton>
+          <DownloadButton variant="contained" onClick={handleResumeDownload}>
+            Resume
+          </DownloadButton>
           <Link href="mailto:tema30k@gmail.com">Contact</Link>
         </div>
       </Container>
@@ -62,6 +73,6 @@ const Container = styled("div")({
   gap: "1rem",
 });
 
-const StyledButton = styled(Button)({
+const DownloadButton = styled(Button)({
   marginRight: "1rem",
 });
