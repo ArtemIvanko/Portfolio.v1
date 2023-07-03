@@ -47,9 +47,9 @@ export const Home = () => {
           requirements.
         </Typography>
         <div>
-          <StyledButton variant="contained" onClick={handleResumeDownload}>
+          <DownloadButton variant="contained" onClick={handleResumeDownload}>
             Resume
-          </StyledButton>
+          </DownloadButton>
           <Link href="mailto:tema30k@gmail.com">Contact</Link>
         </div>
       </Container>
@@ -73,6 +73,6 @@ const Container = styled("div")({
   gap: "1rem",
 });
 
-const StyledButton = styled(Button)({
+const DownloadButton = styled(Button)({
   marginRight: "1rem",
 });
