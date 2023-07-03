@@ -19,3 +19,8 @@ declare module "*.jpeg" {
   const jpegSrc: string;
   export default jpegSrc;
 }
+
+declare module "*.pdf" {
+  const pdfSrc: string;
+  export default pdfSrc;
+}
