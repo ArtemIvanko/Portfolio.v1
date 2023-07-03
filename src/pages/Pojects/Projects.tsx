@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { Card } from "@utils/Card";
-import { Typography } from "@mui/material";
+import { Link, LinkColor } from "@utils/Link";
+import { Icon } from "@utils/Icon";
+import { Typography, Button } from "@mui/material";
 import ProjectImage from "@assets/project1.png";
 import styled from "@/DefaultTheme";
 
@@ -39,10 +41,19 @@ export const Projects = () => {
         <Card
           topic={topic}
           title={title}
-          href={href}
           imgSrc={imgSrc}
           description={description}
-        />
+          key={title}
+        >
+          <SocialContainer>
+            <Icon icon="github" />
+            <Button variant="contained">
+              <Link href={href} color={LinkColor.Secondary}>
+                Visit Project
+              </Link>
+            </Button>
+          </SocialContainer>
+        </Card>
       ))}
     </Root>
   );
@@ -52,4 +63,10 @@ const Root = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+});
+
+const SocialContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  marginTop: "1rem",
 });
