@@ -4,12 +4,13 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import { Link, LinkColor } from "@utils/Link";
+import styled from "@/DefaultTheme";
 
 type IconVariant = "github" | "pinterest" | "twitter" | "telegram";
 
 interface ISocialLinkProps {
-  href: string;
   icon: IconVariant;
+  href?: string;
   color?: LinkColor;
 }
 
@@ -31,9 +32,18 @@ export const Icon = ({ href, icon, color }: ISocialLinkProps) => {
 
   const iconComponent = getIconComponent(icon);
 
+  if (!href) {
+    return <IconContainer>{iconComponent}</IconContainer>;
+  }
+
   return (
     <Link href={href} color={color}>
       {iconComponent}
     </Link>
   );
 };
+
+const IconContainer = styled("div")({
+  display: "inline-flex",
+  padding: "0.25rem 0.5rem",
+});

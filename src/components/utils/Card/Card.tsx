@@ -30,7 +30,7 @@ export const Card = ({
         <Typography variant="h5">{title}</Typography>
         {description && <Typography variant="body2">{description}</Typography>}
         <SocialContainer>
-          <Icon href={href} icon="github" />
+          <Icon icon="github" />
           <Button variant="contained">
             <Link href={href} color={LinkColor.Secondary}>
               Visit Project
@@ -57,6 +57,7 @@ const ImageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   border: `0.25rem solid ${theme.palette.grey[300]}`,
   maxWidth: "30rem",
+  height: "fit-content",
 }));
 
 const ProjectImage = styled("img")({
