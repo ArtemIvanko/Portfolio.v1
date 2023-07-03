@@ -1,12 +1,11 @@
-import { Button, Card as MuiCard, Typography } from "@mui/material";
-import { Link, LinkColor } from "@utils/Link";
-import { Icon } from "@utils/Icon";
+import { ReactNode } from "react";
+import { Card as MuiCard, Typography } from "@mui/material";
 import styled from "@/DefaultTheme";
 
 interface ICardProps {
   topic: string;
   title: string;
-  href: string;
+  children: ReactNode;
   imgSrc?: string;
   description?: string;
 }
@@ -14,29 +13,22 @@ interface ICardProps {
 export const Card = ({
   topic,
   title,
+  children,
   imgSrc,
   description,
-  href,
 }: ICardProps) => {
   return (
     <StyledCard>
       {imgSrc && (
         <ImageContainer>
-          <ProjectImage src={imgSrc} />
+          <Image src={imgSrc} />
         </ImageContainer>
       )}
       <div>
         <Typography>{topic}</Typography>
         <Typography variant="h5">{title}</Typography>
         {description && <Typography variant="body2">{description}</Typography>}
-        <SocialContainer>
-          <Icon icon="github" />
-          <Button variant="contained">
-            <Link href={href} color={LinkColor.Secondary}>
-              Visit Project
-            </Link>
-          </Button>
-        </SocialContainer>
+        {children}
       </div>
     </StyledCard>
   );
@@ -60,12 +52,6 @@ const ImageContainer = styled("div")(({ theme }) => ({
   height: "fit-content",
 }));
 
-const ProjectImage = styled("img")({
+const Image = styled("img")({
   width: "100%",
-});
-
-const SocialContainer = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  marginTop: "1rem",
 });
