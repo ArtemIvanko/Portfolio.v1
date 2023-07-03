@@ -1,16 +1,23 @@
 import { Button, Card as MuiCard, Typography } from "@mui/material";
-import { Link } from "@utils/Link";
+import { Link, LinkColor } from "@utils/Link";
 import { Icon } from "@utils/Icon";
 import styled from "@/DefaultTheme";
 
 interface ICardProps {
   topic: string;
   title: string;
+  href: string;
   imgSrc?: string;
   description?: string;
 }
 
-export const Card = ({ topic, title, imgSrc, description }: ICardProps) => {
+export const Card = ({
+  topic,
+  title,
+  imgSrc,
+  description,
+  href,
+}: ICardProps) => {
   return (
     <StyledCard>
       {imgSrc && (
@@ -23,10 +30,12 @@ export const Card = ({ topic, title, imgSrc, description }: ICardProps) => {
         <Typography variant="h5">{title}</Typography>
         {description && <Typography variant="body2">{description}</Typography>}
         <SocialContainer>
-          <Icon href="" icon="github" />
-          <Link href="">
-            <Button variant="contained">Visit Project</Button>
-          </Link>
+          <Icon href={href} icon="github" />
+          <Button variant="contained">
+            <Link href={href} color={LinkColor.Secondary}>
+              Visit Project
+            </Link>
+          </Button>
         </SocialContainer>
       </div>
     </StyledCard>
@@ -47,6 +56,7 @@ const StyledCard = styled(MuiCard)(({ theme }) => ({
 const ImageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   border: `0.25rem solid ${theme.palette.grey[300]}`,
+  maxWidth: "30rem",
 }));
 
 const ProjectImage = styled("img")({
