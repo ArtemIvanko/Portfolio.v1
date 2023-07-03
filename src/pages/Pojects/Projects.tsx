@@ -1,34 +1,19 @@
 import { useMemo } from "react";
 import { Card } from "@utils/Card";
 import { Typography } from "@mui/material";
+import ProjectImage from "@assets/project1.png";
 import styled from "@/DefaultTheme";
 
 export const Projects = () => {
   const contentCards = useMemo(() => {
     return [
       {
-        topic: "Something Special",
-        title: "Project name",
-        imgSrc:
-          "https://minimal-nextjs-portfolio-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcrypto-screener-cover-image.5d2f6c4e.jpg&w=640&q=75",
+        topic: "TypeScript React",
+        title: "Portfolio Project",
+        imgSrc: ProjectImage,
         description:
-          "A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your local currency.",
-      },
-      {
-        topic: "Something Special",
-        title: "Project name",
-        imgSrc:
-          "https://minimal-nextjs-portfolio-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnft-collection-website-cover-image.18d1fe2a.jpg&w=640&q=75",
-        description:
-          "A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your local currency.",
-      },
-      {
-        topic: "Something Special",
-        title: "Project name",
-        imgSrc:
-          "https://minimal-nextjs-portfolio-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffashion-studio-website.0bd1a552.jpg&w=640&q=75",
-        description:
-          "A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your local currency.",
+          "The TypeScript React Portfolio page is a visually appealing website that showcases projects using React, TypeScript, and Material-UI. It offers seamless navigation and interactive features for users to explore the Home, About, and Project pages.",
+        href: "https://github.com/ArtemIvanko/Portfolio.v1",
       },
     ];
   }, []);
@@ -50,10 +35,11 @@ export const Projects = () => {
         this journey of exploration and inspiration in the realm of web
         development.
       </Typography>
-      {contentCards.map(({ topic, title, imgSrc, description }) => (
+      {contentCards.map(({ topic, title, href, imgSrc, description }) => (
         <Card
           topic={topic}
           title={title}
+          href={href}
           imgSrc={imgSrc}
           description={description}
         />

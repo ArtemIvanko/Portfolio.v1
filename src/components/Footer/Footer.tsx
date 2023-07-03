@@ -7,11 +7,11 @@ export const Footer = () => (
   <Root>
     <Typography variant="body1">Copyright (c) 2023 Artem Ivanko</Typography>
     <div>
-      <Icon href="" icon="github" color={LinkColor.Secondary} />
+      <Icon href="github" icon="github" color={LinkColor.Secondary} />
       {/*TODO: Set color type -> color="secondary" */}
-      <Icon href="" icon="pinterest" color={LinkColor.Secondary} />
-      <Icon href="" icon="twitter" color={LinkColor.Secondary} />
-      <Icon href="" icon="telegram" color={LinkColor.Secondary} />
+      <Icon href="pinterest" icon="pinterest" color={LinkColor.Secondary} />
+      <Icon href="twitter" icon="twitter" color={LinkColor.Secondary} />
+      <Icon href="telegram" icon="telegram" color={LinkColor.Secondary} />
     </div>
   </Root>
 );

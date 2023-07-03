@@ -45,9 +45,9 @@ const StyledLink = styled(ReactLink)<StyledLinkProps>(
     };
 
     return {
+      display: "inline-flex",
       textDecoration: "none",
       color: fillTextByColor[$color],
-      display: "inline-flex",
       padding: "0.25rem 0.5rem",
 
       ...(!!$isActive && {
