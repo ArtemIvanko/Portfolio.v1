@@ -1,18 +1,13 @@
 import { Card } from "@utils/Card";
 import { Icon } from "@utils/Icon";
 import { Typography } from "@mui/material";
+import { skills } from "@/constants/common";
 import styled from "@/DefaultTheme";
 
 export const About = () => (
   <Root>
     <Card topic="Frontend Developer" title="Ivanko Artem">
-      I'm a passionate Frontend developer with expertise in JavaScript, HTML,
-      and CSS. Skilled in React, Git, and SASS, I have hands-on experience
-      creating web applications and designing user interfaces. I thrive in
-      collaborative environments, leveraging strong communication and teamwork
-      abilities to contribute effectively. Seeking opportunities to further
-      enhance my skills and make a valuable impact in a stable company committed
-      to innovation.
+      <img src="" alt="profileImg" />
     </Card>
     <div>
       <Typography variant="h5">Hi there!</Typography>
@@ -26,7 +21,11 @@ export const About = () => (
         committed to innovation.
       </Typography>
       <Typography variant="h5">Skills:</Typography>
-      <Icon icon="github" />
+      <IconContainer>
+        {skills.map((skill) => (
+          <Icon key={skill} icon={skill} />
+        ))}
+      </IconContainer>
     </div>
   </Root>
 );
@@ -40,3 +39,9 @@ const Root = styled("div")(({ theme }) => ({
     flexDirection: "row",
   },
 }));
+
+const IconContainer = styled("div")({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "0.5rem",
+});
