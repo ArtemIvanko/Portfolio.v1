@@ -1,1 +1,42 @@
-export const About = () => <div>This page tells about myself</div>;
+import { Card } from "@utils/Card";
+import { Icon } from "@utils/Icon";
+import { Typography } from "@mui/material";
+import styled from "@/DefaultTheme";
+
+export const About = () => (
+  <Root>
+    <Card topic="Frontend Developer" title="Ivanko Artem">
+      I'm a passionate Frontend developer with expertise in JavaScript, HTML,
+      and CSS. Skilled in React, Git, and SASS, I have hands-on experience
+      creating web applications and designing user interfaces. I thrive in
+      collaborative environments, leveraging strong communication and teamwork
+      abilities to contribute effectively. Seeking opportunities to further
+      enhance my skills and make a valuable impact in a stable company committed
+      to innovation.
+    </Card>
+    <div>
+      <Typography variant="h5">Hi there!</Typography>
+      <Typography variant="body2">
+        I'm a passionate Frontend developer with expertise in JavaScript, HTML,
+        and CSS. Skilled in React, Git, and SASS, I have hands-on experience
+        creating web applications and designing user interfaces. I thrive in
+        collaborative environments, leveraging strong communication and teamwork
+        abilities to contribute effectively. Seeking opportunities to further
+        enhance my skills and make a valuable impact in a stable company
+        committed to innovation.
+      </Typography>
+      <Typography variant="h5">Skills:</Typography>
+      <Icon icon="github" />
+    </div>
+  </Root>
+);
+
+const Root = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
+  padding: "1rem",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+  },
+}));
