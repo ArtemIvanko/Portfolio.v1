@@ -37,6 +37,7 @@ export const Card = ({
 const StyledCard = styled(MuiCard)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  width: "100%",
   gap: "1rem",
   padding: "1rem",
   borderRadius: "0.5rem",
