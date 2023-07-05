@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { Router } from "./Router";
+import { Router } from "../pages/Router";
 
 test("renders the correct components for each route", () => {
   const { getByText } = render(
