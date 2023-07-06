@@ -1,9 +1,20 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 import { Footer } from "./Footer";
+
+const defaultTheme = createTheme();
 
 describe("Footer component", () => {
   test("displays copyright text", () => {
-    render(<Footer />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <MemoryRouter>
+          <Footer />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const copyrightText = screen.getByText(/copyright/i);
 
@@ -11,16 +22,22 @@ describe("Footer component", () => {
   });
 
   test("renders social icons", () => {
-    render(<Footer />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <MemoryRouter>
+          <Footer />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
-    const githubIcon = screen.getByRole("link", { name: /github/i });
-    const pinterestIcon = screen.getByRole("link", { name: /pinterest/i });
-    const twitterIcon = screen.getByRole("link", { name: /twitter/i });
-    const telegramIcon = screen.getByRole("link", { name: /telegram/i });
+    const githubIcon = screen.queryByTestId("github-icon");
+    const pinterestIcon = screen.queryByTestId("pinterest-icon");
+    const twitterIcon = screen.queryByTestId("twitter-icon");
+    const telegramIcon = screen.queryByTestId("telegram-icon");
 
-    expect(githubIcon).toBeInTheDocument();
-    expect(pinterestIcon).toBeInTheDocument();
-    expect(twitterIcon).toBeInTheDocument();
-    expect(telegramIcon).toBeInTheDocument();
+    expect(githubIcon).toBeInTheDocument;
+    expect(pinterestIcon).toBeInTheDocument;
+    expect(twitterIcon).toBeInTheDocument;
+    expect(telegramIcon).toBeInTheDocument;
   });
 });

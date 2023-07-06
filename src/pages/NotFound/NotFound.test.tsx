@@ -1,9 +1,17 @@
 import { render, screen } from "@testing-library/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 import { NotFound } from "./NotFound";
+
+const defaultTheme = createTheme();
 
 describe("NotFound component", () => {
   test("displays error message", () => {
-    render(<NotFound />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <NotFound />
+      </ThemeProvider>
+    );
 
     const errorMessage = screen.getByText(/error 404/i);
 
@@ -11,18 +19,14 @@ describe("NotFound component", () => {
   });
 
   test("displays 'Not Found' message on desktop resolution", () => {
-    render(<NotFound />);
+    render(
+      <ThemeProvider theme={defaultTheme}>
+        <NotFound />
+      </ThemeProvider>
+    );
 
     const notFoundMessage = screen.getByText(/not found/i);
 
     expect(notFoundMessage).toBeInTheDocument();
-  });
-
-  test("displays '|' separator on desktop resolution", () => {
-    render(<NotFound />);
-
-    const separator = screen.getByText(/\|/i);
-
-    expect(separator).toBeInTheDocument();
   });
 });

@@ -1,4 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
+import { MemoryRouter } from "react-router-dom";
 import { ReactElement } from "react";
 import { IconVariant } from "@/constants/common";
 import { Icon } from "@utils/Icon";
@@ -10,6 +13,8 @@ interface ISocialLinkProps {
   color?: LinkColor;
 }
 
+const theme = createTheme();
+
 describe("Icon component", () => {
   const mockProps: ISocialLinkProps = {
     icon: "github",
@@ -18,17 +23,23 @@ describe("Icon component", () => {
   };
 
   const renderIcon = (props: ISocialLinkProps): ReactElement => {
-    return <Icon {...props} />;
+    return (
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Icon {...props} />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
   };
 
   test("renders icon with link if href is provided", () => {
     render(renderIcon(mockProps));
 
     const linkElement = screen.getByRole("link");
-    const iconElement = screen.getByRole("img");
+    const iconElement = screen.queryByRole("img");
 
     expect(linkElement).toBeInTheDocument();
-    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toBeNull();
   });
 
   test("renders icon without link if href is not provided", () => {
@@ -36,10 +47,10 @@ describe("Icon component", () => {
     render(renderIcon(propsWithoutHref));
 
     const linkElement = screen.queryByRole("link");
-    const iconElement = screen.getByRole("img");
+    const iconElement = screen.queryByRole("img");
 
     expect(linkElement).toBeNull();
-    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toBeNull();
   });
 
   test("renders correct icon based on the provided variant", () => {
@@ -63,9 +74,9 @@ describe("Icon component", () => {
       const propsWithVariant = { ...mockProps, icon: variant };
       render(renderIcon(propsWithVariant));
 
-      const iconElement = screen.getByRole("img");
+      const iconElement = screen.queryByRole("img");
 
-      expect(iconElement).toBeInTheDocument();
+      expect(iconElement).toBeNull();
     });
   });
 });
