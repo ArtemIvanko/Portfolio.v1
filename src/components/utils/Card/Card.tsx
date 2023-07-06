@@ -21,7 +21,7 @@ export const Card = ({
     <StyledCard>
       {imgSrc && (
         <ImageContainer>
-          <Image src={imgSrc} />
+          <Image src={imgSrc} alt="Card Image"/>
         </ImageContainer>
       )}
       <div>
