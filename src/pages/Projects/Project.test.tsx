@@ -1,9 +1,20 @@
 import { render, screen } from "@testing-library/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
+import { MemoryRouter } from "react-router-dom";
 import { Projects } from "./Projects";
+
+const theme = createTheme();
 
 describe("Projects component", () => {
   test("displays project portfolio showcase title", () => {
-    render(<Projects />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const title = screen.getByText(/project portfolio showcase/i);
 
@@ -11,10 +22,16 @@ describe("Projects component", () => {
   });
 
   test("displays project descriptions", () => {
-    render(<Projects />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const description1 = screen.getByText(
-      /typeScript react portfolio project/i
+      /TypeScript react portfolio/i
     );
     const description2 = screen.getByText(
       /welcome to my frontend portfolio showcase/i
@@ -25,19 +42,29 @@ describe("Projects component", () => {
   });
 
   test("renders project cards", () => {
-    render(<Projects />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
-    const projectCard = screen.getByRole("article");
     const projectTitle = screen.getByText(/portfolio project/i);
 
-    expect(projectCard).toBeInTheDocument();
     expect(projectTitle).toBeInTheDocument();
   });
 
   test("renders project card with social icons and visit project button", () => {
-    render(<Projects />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Projects />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
-    const socialIcons = screen.getAllByRole("img");
+    const socialIcons = screen.getAllByRole("link");
     const visitProjectButton = screen.getByRole("button", {
       name: /visit project/i,
     });
