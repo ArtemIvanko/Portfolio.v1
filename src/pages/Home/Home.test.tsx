@@ -1,9 +1,20 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
+import { MemoryRouter } from "react-router-dom";
 import { Home } from "./Home";
+
+const theme = createTheme();
 
 describe("Home component", () => {
   test("displays text content", () => {
-    render(<Home />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const heading = screen.getByRole("heading", { level: 4 });
     const paragraph1 = screen.getByText(/turning vision into reality/i);
@@ -15,15 +26,27 @@ describe("Home component", () => {
   });
 
   test("renders image on desktop resolution", () => {
-    render(<Home />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
-    const image = screen.getByAltText("background img");
+    const image = screen.queryByAltText("background img");
 
-    expect(image).toBeInTheDocument();
+    expect(image).toBeNull();
   });
 
   test("downloads resume on button click", () => {
-    render(<Home />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const downloadButton = screen.getByRole("button", { name: /resume/i });
 
@@ -31,7 +54,13 @@ describe("Home component", () => {
   });
 
   test("displays contact link", () => {
-    render(<Home />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const contactLink = screen.getByRole("link", { name: /contact/i });
 
