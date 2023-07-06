@@ -1,17 +1,28 @@
 import { render, screen } from "@testing-library/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
+import { MemoryRouter } from "react-router-dom";
 import { Card } from "./Card";
+
+const theme = createTheme();
 
 describe("Card component", () => {
   const mockProps = {
     topic: "Test Topic",
     title: "Test Title",
     children: <div>Test Children</div>,
-    imgSrc: "test-image.jpg",
+    imgSrc: "http://localhost/test-image.jpg",
     description: "Test Description",
   };
 
   test("renders topic, title, description, and children", () => {
-    render(<Card {...mockProps} />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Card {...mockProps} />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const topicElement = screen.getByText(mockProps.topic);
     const titleElement = screen.getByText(mockProps.title);
@@ -25,7 +36,13 @@ describe("Card component", () => {
   });
 
   test("renders image if imgSrc is provided", () => {
-    render(<Card {...mockProps} />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Card {...mockProps} />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const imageElement = screen.getByAltText("Card Image") as HTMLImageElement;
 
@@ -35,7 +52,13 @@ describe("Card component", () => {
 
   test("does not render image if imgSrc is not provided", () => {
     const propsWithoutImage = { ...mockProps, imgSrc: undefined };
-    render(<Card {...propsWithoutImage} />);
+    render(
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>
+          <Card {...propsWithoutImage} />
+        </MemoryRouter>
+      </ThemeProvider>
+    );
 
     const imageElement = screen.queryByAltText("Card Image");
 
