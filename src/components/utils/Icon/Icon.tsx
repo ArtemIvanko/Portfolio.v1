@@ -58,13 +58,13 @@ export const Icon = ({ href, icon, color }: ISocialLinkProps) => {
       case "yarn":
         return <YarnIcon fill="#2C8EBB" />;
       case "mui":
-        return <MUIIcon fill="#0081CB" />;
+        return <MUIIcon />;
       case "ts":
-        return <TsIcon fill="#007ACC" />;
+        return <TsIcon />;
       case "webpack":
-        return <WebpackIcon fill="#8DD6F9" />;
+        return <WebpackIcon />;
       case "sass":
-        return <SassIcon fill="#CD6799" />;
+        return <SassIcon />;
       case "handshake":
         return <HandshakeIcon />;
       case "analytics":
