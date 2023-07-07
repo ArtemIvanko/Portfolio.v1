@@ -21,10 +21,10 @@ export const About = () => (
         {skills.map(({ icon, title, description }) => (
           <div key={title}>
             {icon.map((variant) => (
-              <Container key={variant}>
+              <SkillTitle key={variant}>
                 <Icon icon={variant} />
                 <Typography variant="h5">{title}</Typography>
-              </Container>
+              </SkillTitle>
             ))}
             <Typography>{description}</Typography>
           </div>
@@ -55,7 +55,7 @@ const IconContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-const Container = styled("div")({
+const SkillTitle = styled("div")({
   display: "flex",
   alignItems: "center",
 });
