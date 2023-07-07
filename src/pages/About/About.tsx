@@ -21,7 +21,7 @@ export const About = () => (
         {skills.map(({ icon, title, description }) => (
           <div key={title}>
             {icon.map((variant) => (
-              <Container>
+              <Container key={variant}>
                 <Icon icon={variant} />
                 <Typography variant="h5">{title}</Typography>
               </Container>
