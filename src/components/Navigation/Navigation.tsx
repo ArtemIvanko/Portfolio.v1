@@ -69,10 +69,10 @@ const BrandName = styled(Typography)(({ theme }) => ({
 
 const ContentWrapper = styled("main")(({ theme }) => ({
   display: "flex",
+  height: "100%",
   alignItems: "center",
   justifyContent: "center",
   overflow: "auto",
-  flexGrow: "1",
   padding: "2rem",
   [theme.breakpoints.up("lg")]: {
     padding: "2.5rem 5rem",

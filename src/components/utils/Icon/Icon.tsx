@@ -3,6 +3,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import HandshakeIcon from "@mui/icons-material/Handshake";
 import { ReactComponent as CssIcon } from "@assets/icons/css.svg";
 import { ReactComponent as FigmaIcon } from "@assets/icons/figma.svg";
 import { ReactComponent as GitIcon } from "@assets/icons/git.svg";
@@ -12,6 +14,10 @@ import { ReactComponent as NodeIcon } from "@assets/icons/node.svg";
 import { ReactComponent as NpmIcon } from "@assets/icons/npm.svg";
 import { ReactComponent as ReactIcon } from "@assets/icons/react.svg";
 import { ReactComponent as YarnIcon } from "@assets/icons/yarn.svg";
+import { ReactComponent as MUIIcon } from "@assets/icons/mui.svg";
+import { ReactComponent as SassIcon } from "@assets/icons/sass.svg";
+import { ReactComponent as TsIcon } from "@assets/icons/typescript.svg";
+import { ReactComponent as WebpackIcon } from "@assets/icons/webpack.svg";
 import { Link, LinkColor } from "@utils/Link";
 import { IconVariant } from "@/constants/common";
 import styled from "@/DefaultTheme";
@@ -51,6 +57,18 @@ export const Icon = ({ href, icon, color }: ISocialLinkProps) => {
         return <ReactIcon fill="#61DAFB" />;
       case "yarn":
         return <YarnIcon fill="#2C8EBB" />;
+      case "mui":
+        return <MUIIcon />;
+      case "ts":
+        return <TsIcon />;
+      case "webpack":
+        return <WebpackIcon />;
+      case "sass":
+        return <SassIcon />;
+      case "handshake":
+        return <HandshakeIcon />;
+      case "analytics":
+        return <AssessmentIcon />;
       default:
         return null;
     }
