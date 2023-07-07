@@ -92,4 +92,10 @@ const IconContainer = styled("div")({
   alignItems: "center",
   padding: "0 0.5rem",
   width: "3rem",
+  height: "3rem",
+
+  svg: {
+    height: "100%",
+    width: "100%",
+  },
 });
