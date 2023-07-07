@@ -59,6 +59,7 @@ export const Home = () => {
 
 const Root = styled("div")({
   display: "flex",
+  height: "100%",
   gap: "3rem",
 });
 
