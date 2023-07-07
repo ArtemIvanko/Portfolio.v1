@@ -5,7 +5,7 @@ import styled from "@/DefaultTheme";
 interface ICardProps {
   topic: string;
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
   imgSrc?: string;
   description?: string;
 }
@@ -21,7 +21,7 @@ export const Card = ({
     <StyledCard>
       {imgSrc && (
         <ImageContainer>
-          <Image src={imgSrc} alt="Card Image"/>
+          <Image src={imgSrc} alt="Card Image" />
         </ImageContainer>
       )}
       <div>
