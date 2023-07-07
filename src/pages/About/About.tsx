@@ -1,15 +1,10 @@
-import { Card } from "@utils/Card";
 import { Icon } from "@utils/Icon";
 import { Typography } from "@mui/material";
 import { skills } from "@/constants/common";
 import styled from "@/DefaultTheme";
-import { Fragment } from "react";
 
 export const About = () => (
   <Root>
-    <Card topic="Frontend Developer" title="Ivanko Artem">
-      <img src="" alt="profileImg" />
-    </Card>
     <div>
       <Typography variant="h5">Hi there!</Typography>
       <Typography variant="body2">
@@ -24,13 +19,15 @@ export const About = () => (
       <Typography variant="h5">Skills:</Typography>
       <IconContainer>
         {skills.map(({ icon, title, description }) => (
-          <Fragment key={title}>
+          <div key={title}>
             {icon.map((variant) => (
-              <Icon key={variant} icon={variant} />
+              <Container>
+                <Icon icon={variant} />
+                <Typography variant="h5">{title}</Typography>
+              </Container>
             ))}
-            <Typography variant="subtitle1">{title}</Typography>
-            <Typography variant="body2">{description}</Typography>
-          </Fragment>
+            <Typography>{description}</Typography>
+          </div>
         ))}
       </IconContainer>
     </div>
@@ -39,6 +36,7 @@ export const About = () => (
 
 const Root = styled("div")(({ theme }) => ({
   display: "flex",
+  height: "100%",
   flexDirection: "column",
   gap: "1rem",
   padding: "1rem",
@@ -47,8 +45,17 @@ const Root = styled("div")(({ theme }) => ({
   },
 }));
 
-const IconContainer = styled("div")({
+const IconContainer = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gap: "1rem",
+  [theme.breakpoints.up("md")]: {
+    gridTemplateColumns: "1fr 1fr 1fr",
+    flexDirection: "row",
+  },
+}));
+
+const Container = styled("div")({
   display: "flex",
-  flexWrap: "wrap",
-  gap: "0.5rem",
+  alignItems: "center",
 });
