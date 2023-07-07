@@ -3,6 +3,7 @@ import { Icon } from "@utils/Icon";
 import { Typography } from "@mui/material";
 import { skills } from "@/constants/common";
 import styled from "@/DefaultTheme";
+import { Fragment } from "react";
 
 export const About = () => (
   <Root>
@@ -22,8 +23,14 @@ export const About = () => (
       </Typography>
       <Typography variant="h5">Skills:</Typography>
       <IconContainer>
-        {skills.map((skill) => (
-          <Icon key={skill} icon={skill} />
+        {skills.map(({ icon, title, description }) => (
+          <Fragment key={title}>
+            {icon.map((variant) => (
+              <Icon key={variant} icon={variant} />
+            ))}
+            <Typography variant="subtitle1">{title}</Typography>
+            <Typography variant="body2">{description}</Typography>
+          </Fragment>
         ))}
       </IconContainer>
     </div>
