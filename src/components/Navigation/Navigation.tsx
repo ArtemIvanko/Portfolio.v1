@@ -71,6 +71,7 @@ const ContentWrapper = styled("main")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  overflow: "auto",
   flexGrow: "1",
   padding: "2rem",
   [theme.breakpoints.up("lg")]: {
