@@ -104,4 +104,16 @@ export const skills: ISkillsProps[] = [
     description:
       "Expertise in utilizing the Material-UI library, which provides pre-designed, customizable components following the Material Design guidelines. Proficient in creating modern and visually appealing user interfaces by leveraging MUI's extensive component library, theming options, and responsive design capabilities. MUI simplifies the development process by providing ready-to-use UI elements, ensuring consistency across the application",
   },
+  {
+    icon: ["handshake"],
+    title: "Communication Skills:",
+    description:
+      "Strong ability to communicate effectively with team members, understand project requirements, and collaborate efficiently. Clear and concise communication is essential for successful teamwork and project execution.",
+  },
+  {
+    icon: ["analytics"],
+    title: "Analytical Skills:",
+    description:
+      "Excellent analytical skills for comprehending complex tasks, identifying problems, and finding effective solutions. The ability to analyze code, troubleshoot issues, and make informed decisions contributes to the overall quality and efficiency of the development process.",
+  },
 ];
