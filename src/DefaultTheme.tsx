@@ -93,7 +93,7 @@ let defaultTheme = createTheme({
     caption: {
       fontFamily: FontFamily.Secondary,
       textTransform: "uppercase",
-      fontSize: "1.5rem",
+      fontSize: "0.6rem",
       fontWeight: 400,
     },
   },

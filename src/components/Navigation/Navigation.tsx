@@ -17,9 +17,7 @@ export const Navigation: FunctionComponent = () => {
   return (
     <Root>
       <NavBar>
-        <BrandName>
-          <Typography variant="caption">Creative</Typography>.js
-        </BrandName>
+        <BrandName variant="h5">Creative.js</BrandName>
         <Link pathName="/home" href="home">
           Home
         </Link>
