@@ -5,6 +5,7 @@ import { Icon } from "@utils/Icon";
 import { Typography, Button } from "@mui/material";
 import ProjectImage from "@assets/project1.png";
 import styled from "@/DefaultTheme";
+import { AddProjectDialog } from "@/pages/Projects/AddProjectDialog";
 
 export const Projects = () => {
   const contentCards = useMemo(() => {
