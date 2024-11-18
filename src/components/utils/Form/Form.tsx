@@ -3,11 +3,6 @@ import styled from "@/DefaultTheme";
 import { Button, Typography } from "@mui/material";
 
 type IFormProps = {
-  name?: string;
-  topic?: string;
-  title?: string;
-  description?: string;
-  href?: string;
   onSubmit?: () => void;
   children: ReactNode;
 };
