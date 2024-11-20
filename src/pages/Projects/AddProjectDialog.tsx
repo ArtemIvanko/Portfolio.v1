@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 type ContentCardProps = {
   topic: string;
   title: string;
-  imgSrc: string; //TODO Add image
+  imgSrc: string;
   description: string;
   href: string;
 };
