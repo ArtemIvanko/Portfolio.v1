@@ -11,7 +11,7 @@ export const Form = ({ children, onSubmit, ...restData }: IFormProps) => (
   <StyledForm onSubmit={onSubmit}>
     <Typography variant="h4">Add Project</Typography>
     <FieldsContainer {...restData}>{children}</FieldsContainer>
-    <Button type="submit" fullWidth title="Add Project">
+    <Button type="submit" fullWidth title="Add Project" variant="contained">
       Add Project
     </Button>
   </StyledForm>
