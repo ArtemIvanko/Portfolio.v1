@@ -1,12 +1,23 @@
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Card } from "@utils/Card";
 import { Link, LinkColor } from "@utils/Link";
 import { Icon } from "@utils/Icon";
 import { Typography, Button } from "@mui/material";
 import ProjectImage from "@assets/project1.png";
 import styled from "@/DefaultTheme";
+import { AddProjectDialog } from "@/pages/Projects/AddProjectDialog";
 
 export const Projects = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleOpenDialog = useCallback(() => {
+    setIsActive(true);
+  }, []);
+
+  const handleCloseDialog = useCallback(() => {
+    setIsActive(false);
+  }, []);
+
   const contentCards = useMemo(() => {
     return [
       {
@@ -37,6 +48,10 @@ export const Projects = () => {
         this journey of exploration and inspiration in the realm of web
         development.
       </Typography>
+      <Button variant="contained" fullWidth onClick={handleOpenDialog}>
+        Add Project
+      </Button>
+      <AddProjectDialog handleCloseDialog={handleCloseDialog} open={isActive} />
       {contentCards.map(({ topic, title, href, imgSrc, description }) => (
         <Card
           topic={topic}

@@ -1,9 +1,9 @@
-# Ivanko Artem's Portfolio App
+# Ivanko Artem's Portfolio App - https://artemivanko.github.io/Portfolio.v1/#/home
 
 ## Install
 
 ```
-$ npm install
+$ yarn
 ```
 
 ## Editor Setup
@@ -17,7 +17,7 @@ $ npm install
 **Note: You will need to run the inspections app locally before starting the new repo.**
 
 ```
-$ npm start
+$ yarn start
 ```
 
 #### Styles
@@ -56,11 +56,11 @@ export const TableContainer = styled("div")(({ theme }) => ({
 ### Production Build
 
 ```
-$ npm run build
+$ yarn run build
 ```
 
 ### Testing
 
 ```
-$ npm test
+$ yarn test
 ```

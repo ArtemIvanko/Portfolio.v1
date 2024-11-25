@@ -1,15 +1,30 @@
-import { Card } from "@utils/Card";
 import { Icon } from "@utils/Icon";
 import { Typography } from "@mui/material";
-import { skills } from "@/constants/common";
+import { useState, useEffect } from "react";
+import { ISkillsProps } from "@/constants/common";
 import styled from "@/DefaultTheme";
 
-export const About = () => (
-  <Root>
-    <Card topic="Frontend Developer" title="Ivanko Artem">
-      <img src="" alt="profileImg" />
-    </Card>
-    <div>
+export const About = () => {
+  const [skillsData, setSkillsData] = useState([]);
+
+  useEffect(() => {
+    async function fetchSkillsData() {
+      try {
+        const response = await fetch(
+          "https://michaelwhite42.github.io/data/skills.json"
+        );
+        const { data } = await response.json();
+        setSkillsData(data);
+      } catch (error) {
+        console.error("Error fetching skills data:", error);
+      }
+    }
+
+    fetchSkillsData();
+  }, []);
+
+  return (
+    <Root>
       <Typography variant="h5">Hi there!</Typography>
       <Typography variant="body2">
         I'm a passionate Frontend developer with expertise in JavaScript, HTML,
@@ -22,26 +37,40 @@ export const About = () => (
       </Typography>
       <Typography variant="h5">Skills:</Typography>
       <IconContainer>
-        {skills.map((skill) => (
-          <Icon key={skill} icon={skill} />
+        {skillsData.map(({ icon, title, description }: ISkillsProps) => (
+          <div key={title}>
+            {icon.map((variant) => (
+              <SkillTitle key={variant}>
+                <Icon icon={variant} />
+                <Typography variant="h5">{title}</Typography>
+              </SkillTitle>
+            ))}
+            <Typography>{description}</Typography>
+          </div>
         ))}
       </IconContainer>
-    </div>
-  </Root>
-);
+    </Root>
+  );
+};
 
-const Root = styled("div")(({ theme }) => ({
+const Root = styled("div")({
   display: "flex",
+  height: "100%",
   flexDirection: "column",
   gap: "1rem",
-  padding: "1rem",
+});
+
+const IconContainer = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "1fr",
+  gap: "1rem",
   [theme.breakpoints.up("md")]: {
+    gridTemplateColumns: "1fr 1fr 1fr",
     flexDirection: "row",
   },
 }));
 
-const IconContainer = styled("div")({
+const SkillTitle = styled("div")({
   display: "flex",
-  flexWrap: "wrap",
-  gap: "0.5rem",
+  alignItems: "center",
 });

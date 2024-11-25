@@ -5,7 +5,7 @@ import styled from "@/DefaultTheme";
 interface ICardProps {
   topic: string;
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
   imgSrc?: string;
   description?: string;
 }
@@ -21,7 +21,7 @@ export const Card = ({
     <StyledCard>
       {imgSrc && (
         <ImageContainer>
-          <Image src={imgSrc} alt="Card Image"/>
+          <Image src={imgSrc} alt="Card Image" />
         </ImageContainer>
       )}
       <div>
@@ -37,6 +37,7 @@ export const Card = ({
 const StyledCard = styled(MuiCard)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  width: "100%",
   gap: "1rem",
   padding: "1rem",
   borderRadius: "0.5rem",

@@ -17,9 +17,7 @@ export const Navigation: FunctionComponent = () => {
   return (
     <Root>
       <NavBar>
-        <BrandName>
-          <Typography variant="caption">Creative</Typography>.js
-        </BrandName>
+        <BrandName variant="h5">Creative.js</BrandName>
         <Link pathName="/home" href="home">
           Home
         </Link>
@@ -44,6 +42,7 @@ export const Navigation: FunctionComponent = () => {
 
 const Root = styled("div")({
   display: "flex",
+  justifyContent: "space-between",
   flexDirection: "column",
   height: "100vh",
 });
@@ -69,9 +68,8 @@ const BrandName = styled(Typography)(({ theme }) => ({
 
 const ContentWrapper = styled("main")(({ theme }) => ({
   display: "flex",
-  alignItems: "center",
   justifyContent: "center",
-  flexGrow: "1",
+  alignItems: "center",
   padding: "2rem",
   [theme.breakpoints.up("lg")]: {
     padding: "2.5rem 5rem",

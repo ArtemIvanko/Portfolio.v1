@@ -11,15 +11,16 @@ export type IconVariant =
   | "node"
   | "npm"
   | "react"
-  | "yarn";
+  | "yarn"
+  | "sass"
+  | "webpack"
+  | "ts"
+  | "mui"
+  | "handshake"
+  | "analytics";
 
-export const skills: IconVariant[] = [
-  "html",
-  "css",
-  "js",
-  "react",
-  "git",
-  "yarn",
-  "npm",
-  "node",
-];
+export interface ISkillsProps {
+  icon: IconVariant[];
+  title: string;
+  description: string;
+}
