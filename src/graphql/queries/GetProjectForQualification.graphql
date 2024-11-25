@@ -1,0 +1,10 @@
+query GetProjectForQualification($id: ID!) {
+    getProject(id: $id) {
+        id
+        title
+        topic
+        description
+        imgSrc
+        href
+    }
+}

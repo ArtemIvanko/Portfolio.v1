@@ -1,25 +1,15 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 import { Outlet } from "react-router-dom";
-import { CircularProgress, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Footer } from "@shared/Footer";
 import { Link } from "@utils/Link";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
   return (
     <Root>
       <NavBar>
-        <BrandName>
-          <Typography variant="caption">Creative</Typography>.js
-        </BrandName>
+        <BrandName variant="h5">Creative.js</BrandName>
         <Link pathName="/home" href="home">
           Home
         </Link>
@@ -31,11 +21,7 @@ export const Navigation: FunctionComponent = () => {
         </Link>
       </NavBar>
       <ContentWrapper>
-        {isLoading ? (
-          <CircularProgress size="5rem" color="primary" />
-        ) : (
-          <Outlet />
-        )}
+        <Outlet />
       </ContentWrapper>
       <Footer />
     </Root>

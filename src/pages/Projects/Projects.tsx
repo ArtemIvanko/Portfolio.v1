@@ -1,24 +1,31 @@
-import { useMemo } from "react";
+import { gql, useQuery } from "@apollo/client";
 import { Card } from "@utils/Card";
 import { Link, LinkColor } from "@utils/Link";
 import { Icon } from "@utils/Icon";
-import { Typography, Button } from "@mui/material";
-import ProjectImage from "@assets/project1.png";
+import { Typography, Button, CircularProgress } from "@mui/material";
 import styled from "@/DefaultTheme";
+import { GetProjectQuery, Query } from "graphql.gen";
+// import getProjects from "src/graphql/queries/GetProjects.graphql"; //TODO - Use setup .graphql imports and use them instead of inline strings
+
+const GET_PROJECTS = gql`
+  query GetProjects {
+    getProjects {
+      id
+      topic
+      title
+      description
+      href
+      imgSrc
+    }
+  }
+`;
 
 export const Projects = () => {
-  const contentCards = useMemo(() => {
-    return [
-      {
-        topic: "TypeScript React",
-        title: "Portfolio Project",
-        imgSrc: ProjectImage,
-        description:
-          "The TypeScript React Portfolio page is a visually appealing website that showcases projects using React, TypeScript, and Material-UI. It offers seamless navigation and interactive features for users to explore the Home, About, and Project pages.",
-        href: "https://github.com/ArtemIvanko/Portfolio.v1",
-      },
-    ];
-  }, []);
+  const { data, loading, error } = useQuery<Query>(GET_PROJECTS);
+  const projects = data?.getProjects || [];
+
+  if (loading) return <CircularProgress size="5rem" color="primary" />;
+  if (error) return <p>Error loading projects: {error.message}</p>;
 
   return (
     <Root>
@@ -37,24 +44,26 @@ export const Projects = () => {
         this journey of exploration and inspiration in the realm of web
         development.
       </Typography>
-      {contentCards.map(({ topic, title, href, imgSrc, description }) => (
-        <Card
-          topic={topic}
-          title={title}
-          imgSrc={imgSrc}
-          description={description}
-          key={title}
-        >
-          <SocialContainer>
-            <Icon icon="github" />
-            <Button variant="contained">
-              <Link href={href} color={LinkColor.Secondary}>
-                Visit Project
-              </Link>
-            </Button>
-          </SocialContainer>
-        </Card>
-      ))}
+      {projects.map(
+        ({ topic, title, href, imgSrc, description }: GetProjectQuery) => (
+          <Card
+            topic={topic}
+            title={title}
+            imgSrc={imgSrc}
+            description={description}
+            key={title}
+          >
+            <SocialContainer>
+              <Icon icon="github" />
+              <Button variant="contained">
+                <Link href={href} color={LinkColor.Secondary}>
+                  Visit Project
+                </Link>
+              </Button>
+            </SocialContainer>
+          </Card>
+        )
+      )}
     </Root>
   );
 };
@@ -63,6 +72,7 @@ const Root = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+  width: "100%",
 });
 
 const SocialContainer = styled("div")({

@@ -8,6 +8,8 @@
       "noImplicitAny": true,
       "noImplicitThis": true,
       "strictNullChecks": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
       "strict": true,
       "module": "es6",
       "target": "es5",
@@ -16,6 +18,7 @@
       "allowJs": true,
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
+      "types": ["graphql"],
       "baseUrl": "./",
       "paths": {
         "@/*": ["src/*"],
