@@ -8,7 +8,7 @@ interface IProvidersProp {
 }
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://portfolio-v1-om4l.onrender.com",
   cache: new InMemoryCache(),
 });
 

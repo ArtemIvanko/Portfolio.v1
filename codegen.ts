@@ -2,7 +2,7 @@ import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "http://localhost:4000/graphql",
+  schema: "https://portfolio-v1-om4l.onrender.com",
   generates: {
     "src/@types/graphql.gen.ts": {
       plugins: [

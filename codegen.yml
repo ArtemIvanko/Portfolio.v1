@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://localhost:4000/graphql"
+schema: "https://portfolio-v1-om4l.onrender.com"
 documents: "src/graphql/**/*.graphql"
 generates:
   src/@types/graphql.gen.ts:
