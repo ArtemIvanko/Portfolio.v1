@@ -1,27 +1,25 @@
 import { Icon } from "@utils/Icon";
-import { Typography } from "@mui/material";
-import { useState, useEffect } from "react";
-import { ISkillsProps } from "@/constants/common";
+import { CircularProgress, Typography } from "@mui/material";
 import styled from "@/DefaultTheme";
+import { gql, useQuery } from "@apollo/client";
+import { Query } from "graphql.gen";
+
+const GET_SKILLS = gql`
+  query GetSkills {
+    getSkills {
+      icon
+      title
+      description
+    }
+  }
+`;
 
 export const About = () => {
-  const [skillsData, setSkillsData] = useState([]);
+  const { data, loading, error } = useQuery<Query>(GET_SKILLS);
+  const skills = data?.getSkills || [];
 
-  useEffect(() => {
-    async function fetchSkillsData() {
-      try {
-        const response = await fetch(
-          "https://michaelwhite42.github.io/data/skills.json"
-        );
-        const { data } = await response.json();
-        setSkillsData(data);
-      } catch (error) {
-        console.error("Error fetching skills data:", error);
-      }
-    }
-
-    fetchSkillsData();
-  }, []);
+  if (loading) return <CircularProgress size="5rem" color="primary" />;
+  if (error) return <p>Error loading projects: {error.message}</p>;
 
   return (
     <Root>
@@ -37,14 +35,18 @@ export const About = () => {
       </Typography>
       <Typography variant="h5">Skills:</Typography>
       <IconContainer>
-        {skillsData.map(({ icon, title, description }: ISkillsProps) => (
+        {skills.map(({ icon, title, description }) => (
           <div key={title}>
-            {icon.map((variant) => (
-              <SkillTitle key={variant}>
-                <Icon icon={variant} />
-                <Typography variant="h5">{title}</Typography>
-              </SkillTitle>
-            ))}
+            {icon.map((variant) => {
+              if (!variant) return null;
+
+              return (
+                <SkillTitle key={variant}>
+                  <Icon icon={variant} />
+                  <Typography variant="h5">{title}</Typography>
+                </SkillTitle>
+              );
+            })}
             <Typography>{description}</Typography>
           </div>
         ))}

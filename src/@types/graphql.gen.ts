@@ -25,9 +25,40 @@ export type GetProjectQuery = {
   topic: Scalars['String']['output'];
 };
 
+export type GetSkillQuery = {
+  __typename?: 'GetSkillQuery';
+  description: Scalars['String']['output'];
+  icon: Array<Maybe<IconVariant>>;
+  id: Scalars['ID']['output'];
+  title: Scalars['String']['output'];
+};
+
+export enum IconVariant {
+  Analytics = 'analytics',
+  Css = 'css',
+  Figma = 'figma',
+  Git = 'git',
+  Github = 'github',
+  Handshake = 'handshake',
+  Html = 'html',
+  Js = 'js',
+  Mui = 'mui',
+  Node = 'node',
+  Npm = 'npm',
+  Pinterest = 'pinterest',
+  React = 'react',
+  Sass = 'sass',
+  Telegram = 'telegram',
+  Ts = 'ts',
+  Twitter = 'twitter',
+  Webpack = 'webpack',
+  Yarn = 'yarn'
+}
+
 export type Mutation = {
   __typename?: 'Mutation';
   addProject: GetProjectQuery;
+  addSkill?: Maybe<GetSkillQuery>;
   deleteProject: Scalars['Boolean']['output'];
 };
 
@@ -41,6 +72,13 @@ export type MutationAddProjectArgs = {
 };
 
 
+export type MutationAddSkillArgs = {
+  description: Scalars['String']['input'];
+  icon: Array<InputMaybe<Scalars['String']['input']>>;
+  title: Scalars['String']['input'];
+};
+
+
 export type MutationDeleteProjectArgs = {
   id: Scalars['ID']['input'];
 };
@@ -49,9 +87,16 @@ export type Query = {
   __typename?: 'Query';
   getProject?: Maybe<GetProjectQuery>;
   getProjects: Array<GetProjectQuery>;
+  getSkill?: Maybe<GetSkillQuery>;
+  getSkills: Array<GetSkillQuery>;
 };
 
 
 export type QueryGetProjectArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryGetSkillArgs = {
   id: Scalars['ID']['input'];
 };
