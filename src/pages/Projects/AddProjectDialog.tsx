@@ -4,8 +4,17 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+type ContentCardProps = {
+  topic: string;
+  title: string;
+  imgSrc: string; //TODO Add image
+  description: string;
+  href: string;
+};
+
 interface AddProjectDialogProps extends DialogProps {
   handleCloseDialog: () => void;
+  cardProps?: ContentCardProps;
 }
 
 const schema = yup

@@ -1,31 +1,14 @@
-import { useCallback, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useCallback, useMemo, useState } from "react";
 import { Card } from "@utils/Card";
 import { Link, LinkColor } from "@utils/Link";
 import { Icon } from "@utils/Icon";
-import { Typography, Button, CircularProgress } from "@mui/material";
+import { Typography, Button } from "@mui/material";
+import ProjectImage from "@assets/project1.png";
 import styled from "@/DefaultTheme";
 import { AddProjectDialog } from "@/pages/Projects/AddProjectDialog";
-import { GetProjectQuery, Query } from "graphql.gen";
-// import getProjects from "src/graphql/queries/GetProjects.graphql"; //TODO - Use setup .graphql imports and use them instead of inline strings
-
-const GET_PROJECTS = gql`
-  query GetProjects {
-    getProjects {
-      id
-      topic
-      title
-      description
-      href
-      imgSrc
-    }
-  }
-`;
 
 export const Projects = () => {
   const [isActive, setIsActive] = useState(false);
-  const { data, loading, error } = useQuery<Query>(GET_PROJECTS);
-  const projects = data?.getProjects || [];
 
   const handleOpenDialog = useCallback(() => {
     setIsActive(true);
@@ -35,8 +18,18 @@ export const Projects = () => {
     setIsActive(false);
   }, []);
 
-  if (loading) return <CircularProgress size="5rem" color="primary" />;
-  if (error) return <p>Error loading projects: {error.message}</p>;
+  const contentCards = useMemo(() => {
+    return [
+      {
+        topic: "TypeScript React",
+        title: "Portfolio Project",
+        imgSrc: ProjectImage,
+        description:
+          "The TypeScript React Portfolio page is a visually appealing website that showcases projects using React, TypeScript, and Material-UI. It offers seamless navigation and interactive features for users to explore the Home, About, and Project pages.",
+        href: "https://github.com/ArtemIvanko/Portfolio.v1",
+      },
+    ];
+  }, []);
 
   return (
     <Root>
@@ -44,32 +37,39 @@ export const Projects = () => {
       <Typography variant="body2">
         Welcome to my frontend portfolio showcase, where I present a collection
         of my diverse and engaging projects. Explore a range of interactive web
-        applications, captivating designs, and user-friendly interfaces.
+        applications, captivating designs, and user-friendly interfaces. From
+        responsive layouts to cutting-edge technologies, this portfolio
+        highlights my skills and creativity in the world of frontend
+        development. Discover the power of code and design as you browse through
+        my projects, each demonstrating my dedication to crafting seamless
+        digital experiences. Whether you're an employer, fellow developer, or
+        simply curious about my work, this portfolio is an opportunity to
+        witness the art and innovation behind my frontend projects. Join me on
+        this journey of exploration and inspiration in the realm of web
+        development.
       </Typography>
-      <AddProjectDialog handleCloseDialog={handleCloseDialog} open={isActive} />
-      {projects.map(
-        ({ topic, title, href, imgSrc, description }: GetProjectQuery) => (
-          <Card
-            topic={topic}
-            title={title}
-            imgSrc={imgSrc}
-            description={description}
-            key={title}
-          >
-            <SocialContainer>
-              <Icon icon="github" />
-              <Button variant="contained">
-                <Link href={href} color={LinkColor.Secondary}>
-                  Visit Project
-                </Link>
-              </Button>
-            </SocialContainer>
-          </Card>
-        )
-      )}
       <Button variant="contained" fullWidth onClick={handleOpenDialog}>
         Add Project
       </Button>
+      <AddProjectDialog handleCloseDialog={handleCloseDialog} open={isActive} />
+      {contentCards.map(({ topic, title, href, imgSrc, description }) => (
+        <Card
+          topic={topic}
+          title={title}
+          imgSrc={imgSrc}
+          description={description}
+          key={title}
+        >
+          <SocialContainer>
+            <Icon icon="github" />
+            <Button variant="contained">
+              <Link href={href} color={LinkColor.Secondary}>
+                Visit Project
+              </Link>
+            </Button>
+          </SocialContainer>
+        </Card>
+      ))}
     </Root>
   );
 };
@@ -78,7 +78,6 @@ const Root = styled("div")({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  width: "100%",
 });
 
 const SocialContainer = styled("div")({
