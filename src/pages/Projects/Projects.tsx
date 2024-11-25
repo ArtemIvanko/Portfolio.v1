@@ -33,7 +33,16 @@ export const Projects = () => {
       <Typography variant="body2">
         Welcome to my frontend portfolio showcase, where I present a collection
         of my diverse and engaging projects. Explore a range of interactive web
-        applications, captivating designs, and user-friendly interfaces.
+        applications, captivating designs, and user-friendly interfaces. From
+        responsive layouts to cutting-edge technologies, this portfolio
+        highlights my skills and creativity in the world of frontend
+        development. Discover the power of code and design as you browse through
+        my projects, each demonstrating my dedication to crafting seamless
+        digital experiences. Whether you're an employer, fellow developer, or
+        simply curious about my work, this portfolio is an opportunity to
+        witness the art and innovation behind my frontend projects. Join me on
+        this journey of exploration and inspiration in the realm of web
+        development.
       </Typography>
       {projects.map(
         ({ topic, title, href, imgSrc, description }: GetProjectQuery) => (
