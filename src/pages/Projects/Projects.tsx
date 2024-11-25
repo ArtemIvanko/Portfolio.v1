@@ -1,11 +1,9 @@
-import { useCallback, useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Card } from "@utils/Card";
 import { Link, LinkColor } from "@utils/Link";
 import { Icon } from "@utils/Icon";
 import { Typography, Button, CircularProgress } from "@mui/material";
 import styled from "@/DefaultTheme";
-import { AddProjectDialog } from "@/pages/Projects/AddProjectDialog";
 import { GetProjectQuery, Query } from "graphql.gen";
 // import getProjects from "src/graphql/queries/GetProjects.graphql"; //TODO - Use setup .graphql imports and use them instead of inline strings
 
@@ -23,17 +21,8 @@ const GET_PROJECTS = gql`
 `;
 
 export const Projects = () => {
-  const [isActive, setIsActive] = useState(false);
   const { data, loading, error } = useQuery<Query>(GET_PROJECTS);
   const projects = data?.getProjects || [];
-
-  const handleOpenDialog = useCallback(() => {
-    setIsActive(true);
-  }, []);
-
-  const handleCloseDialog = useCallback(() => {
-    setIsActive(false);
-  }, []);
 
   if (loading) return <CircularProgress size="5rem" color="primary" />;
   if (error) return <p>Error loading projects: {error.message}</p>;
@@ -46,7 +35,6 @@ export const Projects = () => {
         of my diverse and engaging projects. Explore a range of interactive web
         applications, captivating designs, and user-friendly interfaces.
       </Typography>
-      <AddProjectDialog handleCloseDialog={handleCloseDialog} open={isActive} />
       {projects.map(
         ({ topic, title, href, imgSrc, description }: GetProjectQuery) => (
           <Card
@@ -67,9 +55,6 @@ export const Projects = () => {
           </Card>
         )
       )}
-      <Button variant="contained" fullWidth onClick={handleOpenDialog}>
-        Add Project
-      </Button>
     </Root>
   );
 };
