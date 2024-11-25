@@ -3,11 +3,6 @@ import styled from "@/DefaultTheme";
 import { Button, Typography } from "@mui/material";
 
 type IFormProps = {
-  name?: string;
-  topic?: string;
-  title?: string;
-  description?: string;
-  href?: string;
   onSubmit?: () => void;
   children: ReactNode;
 };
@@ -16,7 +11,7 @@ export const Form = ({ children, onSubmit, ...restData }: IFormProps) => (
   <StyledForm onSubmit={onSubmit}>
     <Typography variant="h4">Add Project</Typography>
     <FieldsContainer {...restData}>{children}</FieldsContainer>
-    <Button type="submit" fullWidth title="Add Project">
+    <Button type="submit" fullWidth title="Add Project" variant="contained">
       Add Project
     </Button>
   </StyledForm>

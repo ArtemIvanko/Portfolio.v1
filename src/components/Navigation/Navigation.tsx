@@ -1,19 +1,11 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 import { Outlet } from "react-router-dom";
-import { CircularProgress, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Footer } from "@shared/Footer";
 import { Link } from "@utils/Link";
 import styled from "@/DefaultTheme";
 
 export const Navigation: FunctionComponent = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
   return (
     <Root>
       <NavBar>
@@ -29,11 +21,7 @@ export const Navigation: FunctionComponent = () => {
         </Link>
       </NavBar>
       <ContentWrapper>
-        {isLoading ? (
-          <CircularProgress size="5rem" color="primary" />
-        ) : (
-          <Outlet />
-        )}
+        <Outlet />
       </ContentWrapper>
       <Footer />
     </Root>
