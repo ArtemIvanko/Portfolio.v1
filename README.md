@@ -1,5 +1,7 @@
 # Ivanko Artem's Portfolio App - https://artemivanko.github.io/Portfolio.v1/#/home
 
+# NOTE: The .env file is not supposed to be here! It is included only as a demonstration of how to use it.
+
 ## Install
 
 ```
